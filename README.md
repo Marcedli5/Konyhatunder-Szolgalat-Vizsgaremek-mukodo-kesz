@@ -17,11 +17,9 @@ Ez a projekt egy ételrendelesi és adminisztrácios rendszer. Három fő részb
 ## Projekt megnyitása
 
 1. Nyisd meg a `Konyhatunder-Szolgalat-Vizsgaremek.sln` fájlt Visual Studioban.
-2. Állitsd be az adatbázis kapcsolatokat az `appsettings.json` fajlokban.
+2. Állitsd be az adatbázis kapcsolatokat az `appsettings.json` fájlokban.
 3. Hozd létre a 2 adatbázist a következő parancsok beírásával a package-manager-console-ba ebben a sorrendben.
-   - Add-Migration Identity -Context ApplicationDbContext
    - Update-Database -Context ApplicationDbContext
-   - Add-Migration VizsgaremekEtlap -Context VizsgaremekEtlapContext
    - Update-Database -Context VizsgaremekEtlapContext
 4. Inditsd el egyszerre a 3 projektet(AdminFelulet-WPF,Frontend-ASP,Backend-ASP).
 
@@ -34,40 +32,40 @@ A backend projekt:
 Backend-ASP
 ```
 
-Visual Studioban indithato a `http` vagy `https` profillal.
+Visual Studioban inditható a `http` vagy `https` profillal.
 
-Alapertelmezett cimek:
+Alapértelmezett cimek:
 
 - HTTP: `http://localhost:5233`
 - HTTPS: `https://localhost:7179`
 
-A backend adja az API vegpontokat a webes feluletnek es a WPF admin alkalmazasnak is.
+A backend adja az API végpontokat a webes felületnek és a WPF admin alkalmazásnak is.
 
 ## Frontend indítása
 
-A felhasznaloi webes felulet projektje:
+A felhasználói webes felület projektje:
 
 ```text
 Frontend-ASP
 ```
 
-Itt erheto el az etlap, a kosar, a profil, a sajat rendelesek, valamint az informacios oldalak. A kosar es rendelés funkciokhoz be kell jelentkezni.
+Itt érhető el az étlap, a kosár, a profil, a sajat rendelések, valamint az információs oldalak. A kosár és rendelés funkciókhoz be kell jelentkezni.
 
 ## WPF admin felület indítása
 
-Az admin alkalmazas projektje:
+Az admin alkalmazás projektje:
 
 ```text
 AdminFelulet-WPF
 ```
 
-Inditas elott ellenorizd az alabbi fajlt:
+Inditás elött ellenörizd az alábbi fájlt:
 
 ```text
 AdminFelulet-WPF/apiSettings.json
 ```
 
-Ebben a `BaseUrl` ertekenek a backend cimet kell tartalmaznia, peldaul:
+Ebben a `BaseUrl` értékenek a backend cimet kell tartalmaznia, példaul:
 
 ```json
 {
@@ -75,47 +73,53 @@ Ebben a `BaseUrl` ertekenek a backend cimet kell tartalmaznia, peldaul:
 }
 ```
 
-Ha a backend mas porton fut, ezt az erteket is at kell irni.
+Ha a backend más porton fut, ezt az érteket is át kell irni.
 
 ## Fő funkciók
 
 ### Webes felület
 
-- etlap megtekintese
-- kosar kezelese
-- rendeles leadása
-- sajat rendelesek megtekintese
+- étlap megtekintése
+- kosár kezelése
+- rendelés leadása
+- saját rendelések megtekintése
 - profil oldal
-- kapcsolat es informacios oldalak
+- kapcsolat és informácios oldalak
 
 ### Backend
 
-- felhasznaloi API vegpontok
-- admin API vegpontok
-- kosar kezeles
-- rendeles kezeles
-- etlap es menu adatok kezelese
-- hibajegy rogzitese
+- felhasználoi API vegpontok
+- admin API végpontok
+- kosár kezeles
+- rendelés kezelés
+- étlap és menü adatok kezelése
+- hibajegy rögzitese
 
 ### WPF admin felület
 
-- heti etlap szerkesztese
-- etelek kezelese
-- uj rendeles felvetele
-- rendelesek keresese, modositasa es torlese
+- heti étlap szerkesztese
+- ételek kezelése
+- új rendelés felvétele
+- rendelések keresése, módosítása és törlese
 
 ## Gyakori hibák
 
 ### Nem indul a WPF admin felület API kapcsolata
 
-Ellenorizd, hogy fut-e a `Backend-ASP`, es az `apiSettings.json` fajlban jo port van-e megadva.
+Ellenörizd, hogy fut-e a `Backend-ASP`, és az `apiSettings.json` fájlban jó port van-e megadva.
 
 ### Adatbázis kapcsolati hiba
 
-Ellenorizd az `appsettings.json` fajlokban a connection stringeket, valamint azt, hogy fut-e a SQL Server es a MySQL/MariaDB szerver.
+Ellenörizd az `appsettings.json` fájlokban a connection stringeket, valamint azt, hogy fut-e az SQL Server es a MySQL/MariaDB szerver.
 
 ### MySQL script hiba az allergének táblánál
 
-A projekt jelenlegi modellje az `allergens` tablaban `id`, `name` es `description` mezoket hasznal. Emiatt a lentebb szereplo scriptben nem szerepel `code` oszlophoz tartozo unique constraint.
+A projekt jelenlegi modellje az `allergens` táblában `id`, `name` és `description` mezőket használ. Emiatt a lentebb szereplő scriptben nem szerepel `code` oszlophoz tartozó unique constraint.
+
+### A wpf-be nem töltődnek be az adatok
+
+A projektnél ez előfordulhat mivel a backend túl lassan tölt be ilyenkor csak újra kell indítani a projektet.
+
+
 
 
