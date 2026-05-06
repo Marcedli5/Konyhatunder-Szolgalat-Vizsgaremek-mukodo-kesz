@@ -1,0 +1,88 @@
+﻿@{
+    var currentPage = ViewContext.RouteData.Values["page"]?.ToString() ?? "/Index";
+}
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Konyhatündér Szolgálat</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Frontend_ASP.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="site-shell">
+        <header class="site-header">
+            <nav class="navbar navbar-expand-lg site-navbar">
+                <div class="container">
+                    <a class="brand-wrap" asp-area="" asp-page="/Index" aria-label="Konyhatündér Szolgálat főoldal">
+                        <span class="brand-badge">
+                            <img src="~/images/Etterem_logo_fekete.png" alt="Konyhatündér Szolgálat logó" class="brand-logo" />
+                        </span>
+                    </a>
+                    <button class="navbar-toggler site-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNav" aria-controls="siteNav"
+                            aria-expanded="false" aria-label="Menü megnyitása">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="siteNav">
+                        <div class="nav-shell ms-auto">
+                            <ul class="navbar-nav align-items-lg-center gap-lg-2">
+                                <li class="nav-item">
+                                    <a class="nav-link @(currentPage == "/Index" ? "active" : "")" asp-area="" asp-page="/Index">Főoldal</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link @(currentPage == "/Bemutatkozas" ? "active" : "")" asp-area="" asp-page="/Bemutatkozas">Bemutatkozás</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link @(currentPage == "/Szolgaltatasaink" ? "active" : "")" asp-area="" asp-page="/Szolgaltatasaink">Szolgáltatásaink</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link @(currentPage == "/HogyanRendelhetek" ? "active" : "")" asp-area="" asp-page="/HogyanRendelhetek">Hogyan rendelhetek?</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link @(currentPage == "/Etlap" ? "active" : "")" asp-area="" asp-page="/Etlap">Étlap</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link @(currentPage == "/Kapcsolat" ? "active" : "")" asp-area="" asp-page="/Kapcsolat">Kapcsolat</a>
+                                </li>
+                            </ul>
+                            <partial name="_LoginPartial" />
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main role="main">
+            @RenderBody()
+        </main>
+
+        <footer class="site-footer">
+            <div class="container footer-grid">
+                <div>
+                    <div class="footer-logo-card">
+                        <img src="~/images/Etterem_logo_feher.png" alt="Konyhatündér Szolgálat fehér logó" class="footer-logo" />
+                    </div>
+                </div>
+                <div class="footer-copy">
+                    <p class="footer-title">Konyhatündér Szolgálat</p>
+                    <p>Friss, házias fogások gyors és barátságos kiszállítással.</p>
+                </div>
+                <div class="footer-contact">
+                    <p><strong>Telefon:</strong> +36 30 123 4567</p>
+                    <p><strong>E-mail:</strong> rendeles@konyhatunder.hu</p>
+                    <p><strong>Cím:</strong> 9400 Sopron, Őszapó utca 12.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

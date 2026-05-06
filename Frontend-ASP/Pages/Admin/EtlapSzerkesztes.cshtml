@@ -1,0 +1,115 @@
+﻿@page "/admin/etlap-szerkesztes"
+@model Frontend_ASP.Pages.Admin.EtlapSzerkesztesModel
+@{
+    ViewData["Title"] = "Étlap szerkesztése";
+}
+
+<section class="page-hero page-hero-soft">
+    <div class="container editor-heading">
+        <span class="eyebrow">Admin felület</span>
+        <h1>Étlap szerkesztése</h1>
+        <p>Itt az admin felhasználó egyszerűen módosíthatja az aktuális ételeket. Az új elemek azonnal megjelennek a nyilvános étlapon.</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container editor-layout">
+        @if (!string.IsNullOrWhiteSpace(Model.StatusMessage))
+        {
+            <div class="flash-message">@Model.StatusMessage</div>
+        }
+
+        <article class="editor-card">
+            <h2>Új étel felvétele</h2>
+            <form method="post" asp-page-handler="Create" class="editor-form">
+                <div class="editor-form-grid">
+                    <div class="editor-form-field">
+                        <label asp-for="NewItem.Category"></label>
+                        <input asp-for="NewItem.Category" />
+                        <span asp-validation-for="NewItem.Category" class="text-danger"></span>
+                    </div>
+                    <div class="editor-form-field">
+                        <label asp-for="NewItem.Name"></label>
+                        <input asp-for="NewItem.Name" />
+                        <span asp-validation-for="NewItem.Name" class="text-danger"></span>
+                    </div>
+                    <div class="editor-form-field full-width">
+                        <label asp-for="NewItem.Description"></label>
+                        <textarea asp-for="NewItem.Description"></textarea>
+                        <span asp-validation-for="NewItem.Description" class="text-danger"></span>
+                    </div>
+                    <div class="editor-form-field">
+                        <label asp-for="NewItem.Price"></label>
+                        <input asp-for="NewItem.Price" />
+                        <span asp-validation-for="NewItem.Price" class="text-danger"></span>
+                    </div>
+                    <div class="editor-form-field">
+                        <label asp-for="NewItem.DisplayOrder"></label>
+                        <input asp-for="NewItem.DisplayOrder" />
+                        <span asp-validation-for="NewItem.DisplayOrder" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="editor-actions">
+                    <button type="submit" class="btn btn-brand-primary">Új étel mentése</button>
+                </div>
+            </form>
+        </article>
+
+        <div class="editor-list">
+            @foreach (var item in Model.Items)
+            {
+                <article class="editor-item">
+                    <h3>@item.Name</h3>
+                    <p class="editor-item-meta">Kategória: <strong>@item.Category</strong> | Ár: <strong>@item.Price.ToString("N0") Ft</strong></p>
+
+                    <form method="post" asp-page-handler="Update" class="editor-form">
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <input type="hidden" name="isAvailable" value="false" />
+
+                        <div class="editor-form-grid">
+                            <div class="editor-form-field">
+                                <label for="category-@item.Id">Kategória</label>
+                                <input id="category-@item.Id" name="category" value="@item.Category" />
+                            </div>
+                            <div class="editor-form-field">
+                                <label for="name-@item.Id">Név</label>
+                                <input id="name-@item.Id" name="name" value="@item.Name" />
+                            </div>
+                            <div class="editor-form-field full-width">
+                                <label for="description-@item.Id">Leírás</label>
+                                <textarea id="description-@item.Id" name="description">@item.Description</textarea>
+                            </div>
+                            <div class="editor-form-field">
+                                <label for="price-@item.Id">Ár</label>
+                                <input id="price-@item.Id" name="price" type="number" min="0" step="1" value="@item.Price.ToString("0")" />
+                            </div>
+                            <div class="editor-form-field">
+                                <label for="displayOrder-@item.Id">Sorrend</label>
+                                <input id="displayOrder-@item.Id" name="displayOrder" type="number" value="@item.DisplayOrder" />
+                            </div>
+                            <div class="editor-form-field full-width">
+                                <label class="editor-check" for="isAvailable-@item.Id">
+                                    <input id="isAvailable-@item.Id" name="isAvailable" type="checkbox" value="true" @(item.IsAvailable ? "checked" : null) />
+                                    Aktív az étlapon
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="editor-actions">
+                            <button type="submit" class="btn btn-brand-primary">Módosítás mentése</button>
+                        </div>
+                    </form>
+
+                    <form method="post" asp-page-handler="Delete">
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <button type="submit" class="btn-danger-soft">Törlés</button>
+                    </form>
+                </article>
+            }
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

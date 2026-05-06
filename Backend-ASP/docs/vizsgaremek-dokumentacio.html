@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <title>Konyhatunder Szolgalat Vizsgaremek Dokumentacio</title>
+  <style>
+    :root {
+      --primary: #a63d40;
+      --secondary: #f2e8cf;
+      --accent: #386641;
+      --text: #1f2933;
+      --muted: #52606d;
+      --border: #d9d9d9;
+      --bg: #fffdf7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+
+    .page {
+      width: 210mm;
+      margin: 0 auto;
+      padding: 20mm 18mm;
+      background: white;
+    }
+
+    h1, h2, h3, h4 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+
+    h1 {
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 22px;
+      border-bottom: 2px solid var(--secondary);
+      padding-bottom: 6px;
+      margin-top: 28px;
+    }
+
+    h3 {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    ul, ol {
+      margin: 8px 0 8px 22px;
+    }
+
+    li {
+      margin: 4px 0;
+    }
+
+    .cover {
+      min-height: 240mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .subtitle,
+    .meta,
+    .note {
+      color: var(--muted);
+    }
+
+    .team-grid {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+
+    .team-grid th,
+    .team-grid td {
+      border: 1px solid var(--border);
+      padding: 10px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .team-grid th {
+      background: var(--secondary);
+      color: var(--text);
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--accent);
+      padding: 12px 14px;
+      margin: 12px 0;
+      background: #fcfcf8;
+    }
+
+    .section-break {
+      page-break-before: always;
+    }
+
+    .code-block {
+      white-space: pre-wrap;
+      background: #f7f7f7;
+      border: 1px solid var(--border);
+      padding: 14px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 12px;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+
+    .small {
+      font-size: 12px;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    @page {
+      size: A4;
+      margin: 12mm;
+    }
+  </style>
+</head>
+<body>
+  <div class="page cover">
+    <p class="subtitle">Vizsgaremek dokumentacio</p>
+    <h1>Konyhatunder Szolgalat 2026</h1>
+    <p class="meta">Kulso es belso rendszerfelujitas terve, funkcios specifikacioja es adatbazis dokumentacioja</p>
+    <p><strong>Csapattagok:</strong><br>Nagyagi Marcell<br>Komives Erik<br>Ivancsics David</p>
+    <p><strong>Felkészítő tanár:</strong><br>Dr. Gludovatz Attila</p>
+    <p><strong>Csapatnev:</strong><br>TBD (kesobb veglegesitheto)</p>
+    <p class="note">Forras: a projekt jelenlegi specifikacioja es a veglegesitett adatbazis-terv alapjan osszeallitott dokumentacio.</p>
+  </div>
+
+  <div class="page section-break">
+    <h2>1. Projekt attekintes</h2>
+    <p>A vizsgaremek celja a Konyhatunder Szolgalat weboldalanak teljeskulso es belso megujitasa. A projekt egyszerre foglalkozik a latogatok szamara lathato modern webes felulettel, a regisztralt felhasznalok rendelest tamogato funkcioival, valamint az adminisztrativ feladatokat ellato backend es asztali kornyezet megvalositasaval.</p>
+
+    <div class="card">
+      <strong>Fo celok</strong>
+      <ul>
+        <li>A weboldal megjelenesenek modernizalasa es atlathatobb felhasznaloi elmeny kialakitasa.</li>
+        <li>Felhasznaloi regisztracio es bejelentkezes bevezetese.</li>
+        <li>Online rendelesi folyamat tamogatasa visszaigazolassal.</li>
+        <li>Adminisztratori etlap- es rendeleskezeles kialakitasa.</li>
+        <li>Bizalmas adatbazis-adatok biztonsagos tarolasa es vedelme.</li>
+      </ul>
+    </div>
+
+    <p><strong>Regi design referencia:</strong> https://www.konyhatunderszolgalat.hu</p>
+
+    <h2>2. Csapat es szerepkorok</h2>
+    <table class="team-grid">
+      <thead>
+        <tr>
+          <th>Csapattag</th>
+          <th>Feladatkor</th>
+          <th>Felelossegi terulet</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ivancsics David</td>
+          <td>Backend</td>
+          <td>Adminisztrator alkalmazas, adatkezeles, uzleti logika tamogatasa</td>
+        </tr>
+        <tr>
+          <td>Nagyagi Marcell</td>
+          <td>Backend</td>
+          <td>Backend szolgaltatasok, API-k, adatbazis-kapcsolatok</td>
+        </tr>
+        <tr>
+          <td>Komives Erik</td>
+          <td>Frontend</td>
+          <td>Felhasznaloi felulet, modern webes megjelenes, kliensoldali elmeny</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>3. Hasznalt technologiak</h2>
+    <ul>
+      <li>ASP .NET: backend szolgaltatasok es szerveroldali logika</li>
+      <li>WPF: adminisztracios, asztali kornyezetben hasznalt alkalmazas</li>
+      <li>React Native: frontend fejlesztes</li>
+      <li>MySQL: adatbazis-kezelorendszer</li>
+    </ul>
+
+    <h2>4. Celcsoportok es fo funkciok</h2>
+    <p>A rendszer harom jol elkulonitheto felhasznaloi csoport kore szervezodik: latogatok, bejelentkezett felhasznalok es adminisztratorok. Minden csoport mas celra hasznalja az oldalt, ezert az elerheto funkciok is eltérnek.</p>
+
+    <h3>4.1 Latogatok</h3>
+    <p>A latogatok azok a felhasznalok, akik meg nem rendelkeznek fiokkal, vagy eppen nem jelentkeztek be. Szamukra az oldal elsodleges szerepe a tajekozodas, a szolgaltatas bemutatasa es az etlap megtekintese.</p>
+    <ul>
+      <li>Fooldal megtekintese</li>
+      <li>Aktualis etlap megtekintese bejelentkezes nelkul</li>
+      <li>Rolunk oldal megnyitasa</li>
+      <li>Kapcsolati adatok megtekintese</li>
+      <li>Rendeles inditasanak lehetosege a bejelentkezes vagy regisztracio fele terelve</li>
+      <li>Bejelentkezo es regisztracios felulet elerese</li>
+    </ul>
+
+    <h3>4.2 Bejelentkezett felhasznalok</h3>
+    <p>A regisztralt es bejelentkezett felhasznalok a latogatoi funkciokon felul mar a szolgaltatas aktiv hasznaloi. Szamukra a rendszer fo erteke a kenyelmes rendelesi folyamat es a sajat adataik kezelese.</p>
+    <ul>
+      <li>Minden latogatoi funkcio elerese</li>
+      <li>Online rendeles leadasa</li>
+      <li>Rendelesrol visszaigazolas fogadasa</li>
+      <li>Sajat profil adatok megtekintese es frissitese</li>
+      <li>Korabbi es aktualis rendelesek listazasa</li>
+      <li>Az etlap teteleinek reszletes, tapanyag-adatokat is tartalmazo megtekintese</li>
+    </ul>
+
+    <h3>4.3 Adminisztratorok</h3>
+    <p>Az adminisztratorok a rendszer uzemeltetoi. Olyan belso funkciokra van szukseguk, amelyekkel az etlapot ossze tudjak allitani, a megrendeleseket ellenorizni tudjak, es a szolgaltatas napi mukodeset iranyitani tudjak.</p>
+    <ul>
+      <li>Etlap szerkesztese</li>
+      <li>Etlap nyomtathato valtozatainak eloallitasa</li>
+      <li>Rendelesek attekintese, darabszamok kovetese</li>
+      <li>Rendelok helyenek vagy cimenek megtekintese</li>
+      <li>Szolgaltatoi oldalon a megrendeles reszleteinek kezelese</li>
+      <li>Felhasznalokkal kapcsolatos ugyintezes es hibajegyek kezelese</li>
+    </ul>
+  </div>
+
+  <div class="page section-break">
+    <h2>5. Reszletes funkcionális specifikacio</h2>
+
+    <h3>5.1 Hitelesites es felhasznalokezeles</h3>
+    <ul>
+      <li>A felhasznalok regisztralni tudnak nevvel, e-mail-cimmel, telefonszammal es lakhelyhez kapcsolodo adatokkal.</li>
+      <li>A felhasznalok be tudnak jelentkezni a sajat fiokjukba.</li>
+      <li>A jelszavak nyers formaban nem tarolhatok, csak biztonsagos hash formaban.</li>
+      <li>A szerepkorok kezelese lehetove teszi a latogatoi, felhasznaloi es adminisztratori szintek szetvalasztasat.</li>
+    </ul>
+
+    <h3>5.2 Rendeleskezeles</h3>
+    <ul>
+      <li>A bejelentkezett felhasznalo az aktualis etlap alapjan rendelest adhat le.</li>
+      <li>A rendszer visszaigazolast kuld a megrendelonek.</li>
+      <li>A rendeleshez tartozik statusz, datum, megjegyzes es a megrendelt menuk darabszama.</li>
+      <li>Az egyes rendelesek arainak torteneti helyesseget a rendeles tetelein tarolt egysegar biztositja.</li>
+    </ul>
+
+    <h3>5.3 Etlap- es menukezeles</h3>
+    <ul>
+      <li>Az adminisztrator napi etlapot tud letrehozni.</li>
+      <li>Egy etlaphoz tobb menu kapcsolhato.</li>
+      <li>Egy menu tobb etelbol allhat, peldaul levesbol, foetelbol es desszertbol.</li>
+      <li>Az etlap minden felhasznaloi csoport szamara lathato.</li>
+      <li>Az etelek mellett kcal, feherje, zsir, szenhidrat, so es allergen informaciok is megjelennek.</li>
+    </ul>
+
+    <h3>5.4 Nyomtatas es tobbfele megjelenes</h3>
+    <p>Az etlap nyomtatasahoz opcionálisan harom kulonbozo vizualis megjelenes tamogathato:</p>
+    <ul>
+      <li>Solar</li>
+      <li>MenuMano</li>
+      <li>Konyhatunder Szolgalat</li>
+    </ul>
+    <p>Ez a funkcio kulonosen hasznos, ha a szolgaltatas kulonbozo formaban szeretne megjeleniteni ugyanazt a napi etlapot.</p>
+
+    <h3>5.5 Hibajegykezeles</h3>
+    <ul>
+      <li>A felhasznalok hibajegyet vagy problemabejelentest tudnak rogzitani.</li>
+      <li>A hibajegy tipushoz, leirashoz, allapothoz es letrehozas idejehez kotodik.</li>
+      <li>Az adminisztrator a hibajegyek allapotat kovetni es modositani tudja.</li>
+    </ul>
+
+    <h2>6. Biztonsagi kovetelmenyek</h2>
+    <ul>
+      <li>A bizalmas adatbazis-adatok vedelme kotelezo.</li>
+      <li>A jelszavak tarolasa kizarolag hash formaban tortenhet.</li>
+      <li>Az e-mail-cim nem lehet idegen kulcs helyett altalanos kapcsolati azonositó.</li>
+      <li>A jogosultsagkezelest szerepkorokkel vagy jol meghatarozott hozzaferesi szintekkel kell megvalositani.</li>
+      <li>A felhasznaloi es adminisztratori funkcioknak el kell kulonulniuk.</li>
+    </ul>
+
+    <h2>7. Adatbazis-terv ertekelese</h2>
+    <p>A kiindulasi adatbazisterv jo alapot adott, mert tartalmazta a fo uzleti elemeket: felhasznalok, rendelesek, menuk, etelek, kategoriak es hibajegyek. Ugyanakkor tobb ponton javitasra szorult a normalizacio, a biztonsag es a bovitheto strukturak erdekeben.</p>
+
+    <h3>7.1 Fo problemak a korabbi tervben</h3>
+    <ul>
+      <li>Az e-mail-cim kapcsolati kulcskent szerepelt, ami valtozhat es uzletileg nem stabil.</li>
+      <li>A telefon INT tipussal szerepelt, ami nem alkalmas valos telefonszamok helyes tarolasara.</li>
+      <li>A jelszotarolas plain text vagy gyenge megoldas fele mutatott.</li>
+      <li>Az etelek hozzavaloit kulon oszlopokban tarolta a terv, ami nem bovitheto.</li>
+      <li>A menuk es etlapok kozotti kapcsolat tul merev volt, mert egy menu egyetlen etelhez kotodott.</li>
+      <li>Hianyoztak fontos allapot- es naplozo mezok, peldaul statusz, created_at es updated_at.</li>
+    </ul>
+
+    <h3>7.2 Alkalmazott javitasok</h3>
+    <ul>
+      <li>Minden kapcsolat elsodlegesen id alapu idegen kulcsokra epul.</li>
+      <li>A felhasznalokat es szerepkoroket az ASP Identity sajat tablai kezelik.</li>
+      <li>Az alapanyagok es receptek kulon tablaba kerultek.</li>
+      <li>A rendelesek es rendelesi tetelek szet lettek valasztva.</li>
+      <li>Az etlap naphoz kotott publikacios strukturat kapott.</li>
+      <li>Beepult az allergenek kezelese.</li>
+    </ul>
+  </div>
+
+  <div class="page section-break">
+    <h2>8. Veglegesitett adatbazis-struktura</h2>
+    <p>Az alabbi szerkezet a projekt jelenlegi, veglegesitett adatbazis-megoldasat irja le. A kod az eredeti anyag alapjan lett rendezve, es egy szukseges hibat is javit: az <strong>allergens</strong> tabla tartalmazza a <strong>code</strong> oszlopot, mivel az egyedi megszoritas erre hivatkozik. A felhasznalokat es szerepkoroket az ASP Identity kezeli, ezert a sajat <strong>users</strong>, <strong>roles</strong> es <strong>user_roles</strong> tablakat a terv mar nem tartalmazza.</p>
+
+    <h3>8.1 Fo entitasok</h3>
+    <ul>
+      <li><strong>ASP Identity (AspNetUsers, AspNetRoles, ...)</strong>: hitelesites es jogosultsagkezeles</li>
+      <li><strong>categories, foods</strong>: etelkategoriak es etelek</li>
+      <li><strong>allergens, food_allergens</strong>: allergen kezeles</li>
+      <li><strong>ingredients, recipe_items</strong>: alapanyagok es receptkapcsolatok</li>
+      <li><strong>menus, menu_items</strong>: menuk es azok tetelei</li>
+      <li><strong>daily_menus, menu_availability</strong>: napi etlap es elerhetoseg</li>
+      <li><strong>orders, order_items</strong>: rendelesek es rendelesi tetelek</li>
+      <li><strong>ticket_types, tickets</strong>: hibajegyek</li>
+    </ul>
+
+    <h3>8.2 Kapcsolatok</h3>
+    <ul>
+      <li>AspNetUsers 1:N orders</li>
+      <li>orders 1:N order_items</li>
+      <li>menus 1:N order_items</li>
+      <li>menus 1:N menu_items</li>
+      <li>foods 1:N menu_items</li>
+      <li>categories 1:N foods</li>
+      <li>foods 1:N recipe_items</li>
+      <li>ingredients 1:N recipe_items</li>
+      <li>daily_menus 1:N menu_availability</li>
+      <li>menus 1:N menu_availability</li>
+      <li>AspNetUsers 1:N tickets</li>
+      <li>ticket_types 1:N tickets</li>
+      <li>A szerepkorok es a felhasznalo-szerepkor kapcsolatok az ASP Identity reszei.</li>
+    </ul>
+
+    <h3>8.3 Vegleges adatbazis kod</h3>
+    <div class="code-block">-- Alap beallitas
+CREATE DATABASE IF NOT EXISTS vizsgaremek_etlap
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_hungarian_ci;
+
+USE vizsgaremek_etlap;
+
+-- Az AspNetUsers / AspNetRoles es kapcsolodo Identity tablakat az alkalmazas sajat migracioi hozzak letre.
+
+CREATE TABLE categories (
+  id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(40) NOT NULL,
+  CONSTRAINT uq_categories_name UNIQUE (name)
+) ENGINE=InnoDB;
+
+CREATE TABLE foods (
+  id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(200) NOT NULL,
+  category_id INT UNSIGNED NOT NULL,
+
+  kcal DECIMAL(7,2) NULL,
+  protein_g DECIMAL(7,2) NULL,
+  fat_g DECIMAL(7,2) NULL,
+  carbs_g DECIMAL(7,2) NULL,
+  salt_g DECIMAL(7,2) NULL,
+
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+  CONSTRAINT fk_foods_category FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE RESTRICT,
+  INDEX ix_foods_category (category_id),
+  INDEX ix_foods_name (name)
+) ENGINE=InnoDB;
+
+CREATE TABLE allergens (
+  id SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  code VARCHAR(20) NOT NULL,
+  name VARCHAR(120) NOT NULL,
+  description VARCHAR(255) NULL,
+
+  CONSTRAINT uq_allergens_name UNIQUE (name),
+  CONSTRAINT uq_allergens_code UNIQUE (code)
+) ENGINE=InnoDB;
+
+CREATE TABLE food_allergens (
+  food_id BIGINT UNSIGNED NOT NULL,
+  allergen_id SMALLINT UNSIGNED NOT NULL,
+
+  PRIMARY KEY (food_id, allergen_id),
+
+  CONSTRAINT fk_food_allergen_food
+    FOREIGN KEY (food_id)
+    REFERENCES foods(id)
+    ON DELETE CASCADE,
+
+  CONSTRAINT fk_food_allergen_allergen
+    FOREIGN KEY (allergen_id)
+    REFERENCES allergens(id)
+    ON DELETE RESTRICT,
+
+  INDEX ix_food_allergens_allergen (allergen_id)
+) ENGINE=InnoDB;
+
+CREATE TABLE ingredients (
+  id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(120) NOT NULL,
+  base_unit ENUM('g','kg','ml','l','db') NOT NULL,
+  CONSTRAINT uq_ingredients_name UNIQUE (name)
+) ENGINE=InnoDB;
+
+CREATE TABLE recipe_items (
+  food_id BIGINT UNSIGNED NOT NULL,
+  ingredient_id BIGINT UNSIGNED NOT NULL,
+  amount DECIMAL(10,3) NOT NULL,
+  unit ENUM('g','kg','ml','l','db') NOT NULL,
+
+  PRIMARY KEY (food_id, ingredient_id),
+  CONSTRAINT fk_recipe_food FOREIGN KEY (food_id) REFERENCES foods(id) ON DELETE CASCADE,
+  CONSTRAINT fk_recipe_ingredient FOREIGN KEY (ingredient_id) REFERENCES ingredients(id) ON DELETE RESTRICT,
+
+  CHECK (amount &gt; 0)
+) ENGINE=InnoDB;
+
+CREATE TABLE menus (
+  id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  code CHAR(1) NOT NULL,
+  price_ft INT UNSIGNED NOT NULL,
+  is_active TINYINT(1) NOT NULL DEFAULT 1,
+
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+  CONSTRAINT uq_menus_code UNIQUE (code),
+  CHECK (price_ft &gt; 0)
+) ENGINE=InnoDB;
+
+CREATE TABLE menu_items (
+  menu_id BIGINT UNSIGNED NOT NULL,
+  food_id BIGINT UNSIGNED NOT NULL,
+  course_order TINYINT UNSIGNED NOT NULL,
+  PRIMARY KEY (menu_id, food_id),
+
+  CONSTRAINT fk_menu_items_menu FOREIGN KEY (menu_id) REFERENCES menus(id) ON DELETE CASCADE,
+  CONSTRAINT fk_menu_items_food FOREIGN KEY (food_id) REFERENCES foods(id) ON DELETE RESTRICT,
+
+  INDEX ix_menu_items_menu (menu_id),
+  INDEX ix_menu_items_food (food_id),
+  CHECK (course_order &gt;= 1)
+) ENGINE=InnoDB;
+
+CREATE TABLE daily_menus (
+  id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  menu_date DATE NOT NULL,
+  note VARCHAR(200) NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+  CONSTRAINT uq_daily_menus_date UNIQUE (menu_date)
+) ENGINE=InnoDB;
+
+CREATE TABLE menu_availability (
+  daily_menu_id BIGINT UNSIGNED NOT NULL,
+  menu_id BIGINT UNSIGNED NOT NULL,
+  max_qty INT UNSIGNED NULL,
+  PRIMARY KEY (daily_menu_id, menu_id),
+
+  CONSTRAINT fk_menu_avail_daily FOREIGN KEY (daily_menu_id) REFERENCES daily_menus(id) ON DELETE CASCADE,
+  CONSTRAINT fk_menu_avail_menu FOREIGN KEY (menu_id) REFERENCES menus(id) ON DELETE RESTRICT
+) ENGINE=InnoDB;
+
+CREATE TABLE orders (
+  id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  user_id VARCHAR(255) NOT NULL,
+  order_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  status ENUM('draft','placed','preparing','ready','cancelled') NOT NULL DEFAULT 'placed',
+  comment VARCHAR(200) NULL,
+
+  CONSTRAINT fk_orders_user FOREIGN KEY (user_id) REFERENCES AspNetUsers(Id) ON DELETE RESTRICT,
+  INDEX ix_orders_user_date (user_id, order_date),
+  INDEX ix_orders_status (status)
+) ENGINE=InnoDB;
+
+CREATE TABLE order_items (
+  order_id BIGINT UNSIGNED NOT NULL,
+  menu_id BIGINT UNSIGNED NOT NULL,
+  qty INT UNSIGNED NOT NULL DEFAULT 1,
+  unit_price_ft INT UNSIGNED NOT NULL,
+  PRIMARY KEY (order_id, menu_id),
+
+  CONSTRAINT fk_order_items_order FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+  CONSTRAINT fk_order_items_menu FOREIGN KEY (menu_id) REFERENCES menus(id) ON DELETE RESTRICT,
+
+  CHECK (qty &gt; 0),
+  CHECK (unit_price_ft &gt; 0)
+) ENGINE=InnoDB;
+
+CREATE TABLE ticket_types (
+  id SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(80) NOT NULL,
+  CONSTRAINT uq_ticket_types_name UNIQUE (name)
+) ENGINE=InnoDB;
+
+CREATE TABLE tickets (
+  id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  user_id VARCHAR(255) NOT NULL,
+  ticket_type_id SMALLINT UNSIGNED NOT NULL,
+  description TEXT NOT NULL,
+  status ENUM('open','in_progress','closed') NOT NULL DEFAULT 'open',
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+  CONSTRAINT fk_tickets_user FOREIGN KEY (user_id) REFERENCES AspNetUsers(Id) ON DELETE RESTRICT,
+  CONSTRAINT fk_tickets_type FOREIGN KEY (ticket_type_id) REFERENCES ticket_types(id) ON DELETE RESTRICT,
+
+  INDEX ix_tickets_user_status (user_id, status),
+  INDEX ix_tickets_type_status (ticket_type_id, status)
+) ENGINE=InnoDB;</div>
+
+    <h2>9. Adatbazis-tervezesi megjegyzesek</h2>
+    <ul>
+      <li>Az etlap mindenki szamara lathato, beleertve a vendegeket is.</li>
+      <li>Az etelek tapanyagadatai kotelezo dokumentacios elemek.</li>
+      <li>Az allergen-informaciok miatt kulon kapcsolat lett bevezetve a foods es allergens tablák kozott.</li>
+      <li>A jelenlegi modellek a projektben mar Class Library formaban, scaffoldinggal lettek letrehozva a Models mappaban.</li>
+    </ul>
+
+    <h2>10. Tovabbi fejlesztesi lehetosegek</h2>
+    <ul>
+      <li>E-mailes vagy alkalmazason beluli automatikus visszaigazolasok bovítese.</li>
+      <li>Rendelesi allapotok valos ideju kovetese.</li>
+      <li>Nyomtatasi sablonok reszletesebb testreszabasa.</li>
+      <li>Statisztikai kimutatasok adminisztratorok szamara.</li>
+      <li>Profilkezeles tovabbi adatokkal, peldaul szallitasi cim vagy preferenciak tarolasaval.</li>
+    </ul>
+
+    <h2>11. Dokumentumkarbantartas</h2>
+    <p>Ez a dokumentacio a projektben szerkesztheto HTML-forraskent szerepel. A jovobeni valtozasokat ebben a fajlban kell atvezetni, majd a mellekelt export szkripttel ujra lehet generalni a PDF valtozatot.</p>
+    <p class="small"><strong>Forrasfajl:</strong> docs/vizsgaremek-dokumentacio.html</p>
+    <p class="small"><strong>Export szkript:</strong> docs/Build-Documentation.ps1</p>
+  </div>
+</body>
+</html>

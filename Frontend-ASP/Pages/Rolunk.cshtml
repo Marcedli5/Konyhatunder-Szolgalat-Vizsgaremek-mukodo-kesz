@@ -1,0 +1,128 @@
+﻿@page
+@model Frontend_ASP.Pages.RolunkModel
+@{
+    ViewData["Title"] = "Rólunk";
+}
+
+<div class="site-shell page-stack">
+    <section class="hero-panel">
+        <div class="hero-grid">
+            <div>
+                <span class="eyebrow">Bemutatkozás</span>
+                <h1 class="hero-title">Rólunk, emberközelien.</h1>
+                <p class="hero-text">
+                    Ez az oldal a beküldött mintakép szerkezetét idézi meg: hangsúlyos felső sáv, középre húzott bemutatkozás,
+                    és több jól elkülönülő blokk, amelyek egy ételkiszállító szolgáltatás bizalomépítő tartalmát mutatják be.
+                </p>
+                <div class="chip-list">
+                    <span class="tag-pill">Friss menük</span>
+                    <span class="tag-pill">Korrekt kiszállítás</span>
+                    <span class="tag-pill">Otthonos arculat</span>
+                </div>
+            </div>
+
+            <div class="placeholder-visual"></div>
+        </div>
+    </section>
+
+    <section class="content-panel">
+        <div class="story-grid">
+            <div class="story-copy">
+                <span class="eyebrow">Kik vagyunk</span>
+                <h2 class="section-title">Egy családias márka kortárs köntösben.</h2>
+                <p>
+                    A Konyhatündér Szolgálat célja, hogy a napi ebédrendelés ne csak praktikus, hanem megnyugtató élmény is legyen.
+                    A felület ezért barátságos tipográfiát, meleg tónusokat és könnyen követhető blokkokat használ.
+                </p>
+                <p>
+                    A bemutatkozó szekciókat úgy építettem fel, hogy később könnyen cserélhető legyen bennük a tényleges céges szöveg,
+                    képgaléria vagy akár a vizsgafeladatból következő tartalom. Most egyelőre minden vizuális helyén egy letisztult placeholder látható.
+                </p>
+                <p>
+                    Az oldal mobilon is jól törik: a kártyák egymás alá rendeződnek, a navigáció hamburger menübe csukódik,
+                    a fő hangsúly pedig megmarad a szekciócímeken és a gyors CTA-kon.
+                </p>
+            </div>
+
+            <div class="placeholder-tall"></div>
+        </div>
+    </section>
+
+    <section id="eteleinkrol" class="content-panel">
+        <span class="eyebrow">Ételeinkről</span>
+        <h2 class="section-title">Mit szeretnénk kommunikálni a fogásainkról?</h2>
+        <p class="section-text">
+            Ez a rész a menüs szolgáltatás mögötti minőségi üzeneteket emeli ki: alapanyag, csomagolás, és az otthonos ízvilág egyszerre kap hangsúlyt.
+        </p>
+
+        <div class="value-grid">
+            <article class="value-card">
+                <h3>Megbízható alapanyagok</h3>
+                <p>A hangsúly a tiszta, ismerős ízeken és a gondosan összeállított napi kínálaton van.</p>
+            </article>
+            <article class="value-card">
+                <h3>Praktikus kiszállítás</h3>
+                <p>A kommunikáció könnyen bővíthető csomagolási, szállítási és rendelési tudnivalókkal.</p>
+            </article>
+            <article class="value-card">
+                <h3>Házias hangulat</h3>
+                <p>A vizuális világ egyszerre legyen megnyerő, tiszta és bizalmat ébresztő a látogatóban.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="content-panel">
+        <div class="about-grid">
+            <div>
+                <span class="eyebrow">Miért ilyen a design?</span>
+                <h2 class="section-title">A minta felépítését követi, de saját színvilággal.</h2>
+                <p class="section-text">
+                    A referenciaoldal piros-kék hangsúlyait egy mély türkiz és meleg narancs páros váltja fel.
+                    Ettől megmarad az energikus, ételkiszállítós karakter, mégsem lesz másolatérzetű az oldal.
+                </p>
+                <ul class="info-list">
+                    <li>Kétszintes fejléc információs sávval és menüvel.</li>
+                    <li>Nagy, központi bemutatkozó blokkok kártyás elrendezésben.</li>
+                    <li>Jövőben valódi fotókkal azonnal továbbfejleszthető placeholder helyek.</li>
+                </ul>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="placeholder-wide"></div>
+                <div class="placeholder-wide"></div>
+                <div class="placeholder-wide"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kapcsolat" class="content-panel">
+        <div class="contact-grid">
+            <article class="contact-card">
+                <span class="eyebrow">Kapcsolat</span>
+                <h2 class="section-title">Legyünk könnyen elérhetők.</h2>
+                <ul class="contact-list">
+                    <li>Telefon: +36 30 123 4567</li>
+                    <li>E-mail: hello@konyhatunder.hu</li>
+                    <li>Cím: 9700 Szombathely, Minta utca 12.</li>
+                </ul>
+            </article>
+
+            <aside class="contact-accent">
+                <h3>Ügyfélszolgálati idő</h3>
+                <p>Hétfőtől péntekig 08:00-16:00 között gyors válaszokkal és rugalmas rendeléskezeléssel.</p>
+                <p>Ide később akár űrlap, térkép vagy kiszállítási zóna infó is bekerülhet.</p>
+            </aside>
+        </div>
+    </section>
+
+    <section id="karrier" class="content-panel">
+        <div class="cta-strip">
+            <div>
+                <span class="eyebrow">Karrier</span>
+                <h2 class="section-title">Konyhai és futár pozíciók számára is előkészítve.</h2>
+                <p class="section-text">Ez a blokk később könnyen lecserélhető konkrét állásleírásra vagy jelentkezési űrlapra.</p>
+            </div>
+            <a class="button-primary" href="mailto:hello@konyhatunder.hu">Jelentkezem</a>
+        </div>
+    </section>
+</div>

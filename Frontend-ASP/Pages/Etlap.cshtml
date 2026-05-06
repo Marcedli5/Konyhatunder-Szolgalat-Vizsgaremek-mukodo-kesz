@@ -1,0 +1,103 @@
+﻿@page "/etlap"
+@model Frontend_ASP.Pages.EtlapModel
+@{
+    ViewData["Title"] = "Étlap";
+}
+
+<section class="page-hero">
+    <div class="container">
+        <span class="eyebrow">Étlap</span>
+        <h1>Az aktuális napi menük és rendelhető ajánlatok.</h1>
+        @if (!Model.CanOrder)
+        {
+            <div class="identity-message identity-message-info">
+                Bejelentkezés után tudsz kosárba ételeket tenni és rendelést leadni.
+            </div>
+        }
+        @if (User.IsInRole("Admin"))
+        {
+            <div class="identity-message identity-message-info">
+                Az étlap szerkesztése most a WPF adminfelületen történik.
+            </div>
+        }
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container daily-menu-layout">
+        @if (!Model.WeekSections.SelectMany(week => week.Days).Any(day => day.Offers.Any()))
+        {
+            <div class="content-card">
+                <h2>Még nincs nyilvános napi kínálat.</h2>
+            </div>
+        }
+        else
+        {
+            @foreach (var week in Model.WeekSections)
+            {
+                <section class="menu-week-section" id="@week.Title.ToLower().Replace(" ", "-")">
+                    <div class="week-section-header">
+                        <div>
+                            <span class="eyebrow">@week.Title</span>
+                            <h2>@week.DateRange</h2>
+                        </div>
+                    </div>
+
+                    <div class="menu-week-grid">
+                        @foreach (var day in week.Days)
+                        {
+                            <article class="editor-card daily-menu-day">
+                                <div class="daily-menu-day-header">
+                                    <div>
+                                        <span class="eyebrow">@day.DeliveryDate.ToString("dddd", new System.Globalization.CultureInfo("hu-HU"))</span>
+                                        <h3>@day.DeliveryDate.ToString("yyyy. MM. dd.")</h3>
+                                    </div>
+                                    @if (!string.IsNullOrWhiteSpace(day.Note))
+                                    {
+                                        <p class="editor-item-meta">@day.Note</p>
+                                    }
+                                </div>
+
+                                @if (!day.Offers.Any())
+                                {
+                                    <p class="editor-item-meta">Erre a napra még nincs nyilvános menü.</p>
+                                }
+                                else
+                                {
+                                    <div class="daily-menu-cards">
+                                        @foreach (var offer in day.Offers)
+                                        {
+                                            <article class="menu-offer-card">
+                                                <div class="menu-offer-head">
+                                                    <h4>@offer.DisplayName</h4>
+                                                    <span class="menu-price">@offer.UnitPriceFt.ToString("N0") Ft</span>
+                                                </div>
+                                                <ul class="menu-list">
+                                                    @foreach (var food in offer.Foods)
+                                                    {
+                                                        <li>
+                                                            <span>@food.Name</span>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                                @if (Model.CanOrder)
+                                                {
+                                                    <button type="button"
+                                                            class="btn btn-brand-primary js-add-to-cart"
+                                                            data-menu-id="@offer.MenuId"
+                                                            data-delivery-date="@offer.DeliveryDate.ToString("yyyy-MM-dd")">
+                                                        Kosárba
+                                                    </button>
+                                                }
+                                            </article>
+                                        }
+                                    </div>
+                                }
+                            </article>
+                        }
+                    </div>
+                </section>
+            }
+        }
+    </div>
+</section>

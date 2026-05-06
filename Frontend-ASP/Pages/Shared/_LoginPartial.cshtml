@@ -1,0 +1,49 @@
+@{
+    var email = User.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value;
+    var isAdminUser = User.IsInRole("Admin") || email?.StartsWith("admin", StringComparison.OrdinalIgnoreCase) == true;
+}
+
+<ul class="navbar-nav account-nav">
+@if (User.Identity?.IsAuthenticated == true)
+{
+    <li class="nav-item">
+        <a class="nav-link account-pill" asp-page="/Profilom" title="Profilom">@(User.Identity?.Name ?? "Profilom")</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link account-action cart-link" asp-page="/Kosar" title="Kosár">
+            <span class="cart-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img" focusable="false">
+                    <path d="M3 5h2l2.1 8.4a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.7L21 7H7.2" />
+                    <circle cx="10" cy="18.5" r="1.5" />
+                    <circle cx="17" cy="18.5" r="1.5" />
+                </svg>
+            </span>
+            <span>Kosár</span>
+            <span class="cart-count-badge" id="cart-count">0</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link account-action" asp-page="/Rendeleseim">Rendeléseim</a>
+    </li>
+    @if (isAdminUser)
+    {
+        <li class="nav-item">
+            <a class="nav-link account-action admin-link" asp-page="/Admin/Rendelesek">Admin rendelések</a>
+        </li>
+    }
+    <li class="nav-item">
+        <form class="logout-form" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })">
+            <button type="submit" class="nav-link btn btn-link account-action">Kijelentkezés</button>
+        </form>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link account-action" asp-area="Identity" asp-page="/Account/Register">Regisztráció</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link account-action login-link" asp-area="Identity" asp-page="/Account/Login">Bejelentkezés</a>
+    </li>
+}
+</ul>

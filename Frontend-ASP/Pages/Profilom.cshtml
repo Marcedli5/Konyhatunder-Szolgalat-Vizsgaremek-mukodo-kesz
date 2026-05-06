@@ -1,0 +1,53 @@
+﻿@page "/profilom"
+@model Frontend_ASP.Pages.ProfilomModel
+@{
+    ViewData["Title"] = "Profilom";
+}
+
+<section class="page-hero page-hero-soft">
+    <div class="container auth-shell">
+        <article class="auth-card">
+            <span class="eyebrow">Profilom</span>
+            <h1>Fiókadatok kezelése</h1>
+            <p class="auth-lead">Itt módosíthatod a felhasználónevedet és szükség esetén a jelszavadat.</p>
+
+            @if (!string.IsNullOrWhiteSpace(Model.StatusMessage))
+            {
+                <div class="identity-message identity-message-success">@Model.StatusMessage</div>
+            }
+
+            <form method="post" class="auth-form">
+                <div class="auth-field">
+                    <label>E-mail cím</label>
+                    <input value="@Model.Email" class="identity-input" disabled />
+                </div>
+
+                <div class="auth-field">
+                    <label asp-for="Input.Username"></label>
+                    <input asp-for="Input.Username" class="identity-input" />
+                    <span asp-validation-for="Input.Username" class="text-danger"></span>
+                </div>
+
+                <div class="auth-field">
+                    <label asp-for="Input.NewPassword"></label>
+                    <input asp-for="Input.NewPassword" class="identity-input" />
+                    <span asp-validation-for="Input.NewPassword" class="text-danger"></span>
+                </div>
+
+                <div class="auth-field">
+                    <label asp-for="Input.ConfirmPassword"></label>
+                    <input asp-for="Input.ConfirmPassword" class="identity-input" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                <div class="auth-actions">
+                    <button type="submit" class="btn btn-brand-primary auth-submit">Mentés</button>
+                </div>
+            </form>
+        </article>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

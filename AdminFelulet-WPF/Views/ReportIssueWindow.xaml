@@ -1,0 +1,71 @@
+<Window x:Class="WPF_AdminFelulet.Views.ReportIssueWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Hiba jelentése"
+        Width="560"
+        Height="420"
+        MinWidth="520"
+        MinHeight="410"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="#FFF2F5F9">
+    <Grid Margin="14">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+            <TextBlock Text="Új hibajelentés"
+                       FontSize="20"
+                       FontWeight="SemiBold"
+                       Foreground="#FF253243" />
+            <TextBlock Margin="0,6,0,0"
+                       Text="A ticket típusa automatikusan WPF-issue lesz."
+                       Foreground="#FF667588" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Margin="0,14,0,0">
+            <TextBlock Text="Hiba leírása"
+                       FontWeight="SemiBold"
+                       Foreground="#FF253243" />
+            <TextBox Margin="0,6,0,0"
+                     Padding="8"
+                     Height="150"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap"
+                     VerticalScrollBarVisibility="Auto"
+                     MaxLength="4000"
+                     Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+
+        <Grid Grid.Row="3" Margin="0,14,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock VerticalAlignment="Center"
+                       TextWrapping="Wrap"
+                       Foreground="#FF667588"
+                       Text="A mentés nyitott ticketet hoz létre a WPF-Admin userhez." />
+
+            <StackPanel Grid.Row="1"
+                        Margin="0,12,0,0"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <Button Width="84"
+                        Padding="8,5"
+                        Command="{Binding CancelCommand}"
+                        Content="Mégse" />
+                <Button Width="100"
+                        Margin="8,0,0,0"
+                        Padding="8,5"
+                        Command="{Binding SaveCommand}"
+                        Content="Küldés" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

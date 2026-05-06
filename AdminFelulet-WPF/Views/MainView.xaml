@@ -1,0 +1,149 @@
+<Window x:Class="WPF_AdminFelulet.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:WPF_AdminFelulet.ViewModels"
+        xmlns:views="clr-namespace:WPF_AdminFelulet.Views"
+        mc:Ignorable="d"
+        Title="Konyhatündér Admin"
+        Width="1220"
+        Height="760"
+        MinWidth="920"
+        MinHeight="620"
+        WindowStartupLocation="CenterScreen"
+        Background="#FFF2F5F9">
+    <Window.Resources>
+        <SolidColorBrush x:Key="ShellInkBrush" Color="#FF253243" />
+        <SolidColorBrush x:Key="ShellMutedBrush" Color="#FF667588" />
+        <SolidColorBrush x:Key="ShellAccentBrush" Color="#FF4E6FAE" />
+        <SolidColorBrush x:Key="ShellPaperBrush" Color="#FFFFFFFF" />
+        <SolidColorBrush x:Key="ShellLineBrush" Color="#FFD8E2EE" />
+
+        <DataTemplate DataType="{x:Type vm:EtlapViewModel}">
+            <views:EtlapUserControl />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:EtelekViewModel}">
+            <views:EtelekUserControl />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:RendelesekAddViewModel}">
+            <views:RendelesekAddUserControl />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:RendelesekEditViewModel}">
+            <views:RendelesekEditUserControl />
+        </DataTemplate>
+
+        <Style TargetType="TabControl">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
+
+        <Style TargetType="TabItem">
+            <Setter Property="Foreground" Value="{StaticResource ShellMutedBrush}" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Margin" Value="0,0,8,0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Border x:Name="TabBorder"
+                                Background="#FFEAF0F7"
+                                BorderBrush="{StaticResource ShellLineBrush}"
+                                BorderThickness="1"
+                                CornerRadius="10"
+                                Padding="12,6">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              ContentSource="Header" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="TabBorder" Property="Background" Value="{StaticResource ShellAccentBrush}" />
+                                <Setter TargetName="TabBorder" Property="BorderBrush" Value="{StaticResource ShellAccentBrush}" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="TabBorder" Property="Background" Value="#FFDCE7F5" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="#FFF2F5F9">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Margin="20,20,20,10"
+                Padding="12"
+                CornerRadius="14"
+                Background="{StaticResource ShellPaperBrush}"
+                BorderBrush="{StaticResource ShellLineBrush}"
+                BorderThickness="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="Konyhatündér Admin"
+                               FontSize="22"
+                               FontWeight="Bold"
+                               Foreground="{StaticResource ShellInkBrush}" />
+                    
+                </StackPanel>
+
+                <Border Grid.Column="1"
+                        Padding="10,6"
+                        CornerRadius="10"
+                        Background="#FFEAF0F7"
+                        BorderBrush="{StaticResource ShellLineBrush}"
+                        BorderThickness="1"
+                        VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding SelectedTabTitle}"
+                                   VerticalAlignment="Center"
+                                   FontWeight="Bold"
+                                   Foreground="{StaticResource ShellInkBrush}" />
+                        <Button Margin="10,0,0,0"
+                                Padding="12,4"
+                                Command="{Binding ReportIssueCommand}"
+                                Background="{StaticResource ShellAccentBrush}"
+                                Foreground="White"
+                                BorderBrush="{StaticResource ShellAccentBrush}"
+                                BorderThickness="1"
+                                FontWeight="SemiBold"
+                                Cursor="Hand"
+                                Content="Hiba jelentése" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="1"
+                Margin="20,0,20,20"
+                Padding="12"
+                CornerRadius="14"
+                Background="{StaticResource ShellPaperBrush}"
+                BorderBrush="{StaticResource ShellLineBrush}"
+                BorderThickness="1">
+            <TabControl ItemsSource="{Binding Tabs}"
+                        SelectedItem="{Binding SelectedTab}">
+                <TabControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Title}" />
+                    </DataTemplate>
+                </TabControl.ItemTemplate>
+            </TabControl>
+        </Border>
+    </Grid>
+</Window>

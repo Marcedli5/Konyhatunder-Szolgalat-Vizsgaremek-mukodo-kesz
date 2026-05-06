@@ -1,0 +1,48 @@
+﻿@page "/admin/rendelesek"
+@model Frontend_ASP.Pages.Admin.RendelesekModel
+@{
+    ViewData["Title"] = "Admin rendelések";
+}
+
+<section class="page-hero">
+    <div class="container">
+        <span class="eyebrow">Admin</span>
+        <h1>Felhasználói rendelések áttekintése</h1>
+        <p>Az étlap szerkesztése most a WPF adminfelületen történik, itt pedig a weben leadott rendelések láthatók.</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container editor-layout">
+        @if (!Model.Orders.Any())
+        {
+            <div class="content-card">
+                <h2>Még nincs rendelés.</h2>
+                <p>Amint a felhasználók kosárból leadnak rendelést, itt megjelennek.</p>
+            </div>
+        }
+        else
+        {
+            @foreach (var order in Model.Orders)
+            {
+                <article class="editor-item">
+                    <h3>@order.CustomerName - #@order.OrderId</h3>
+                    <p class="editor-item-meta">@order.CustomerEmail | @order.DeliveryDate.ToString("yyyy. MM. dd.") | Státusz: <strong>@order.Status</strong> | Összesen: <strong>@order.TotalPriceFt.ToString("N0") Ft</strong></p>
+                    @if (!string.IsNullOrWhiteSpace(order.Comment))
+                    {
+                        <p>@order.Comment</p>
+                    }
+                    <ul class="menu-list">
+                        @foreach (var item in order.Items)
+                        {
+                            <li>
+                                <span>@($"{item.MenuCode} menü x {item.Quantity}")</span>
+                                <span>@item.TotalPriceFt.ToString("N0") Ft</span>
+                            </li>
+                        }
+                    </ul>
+                </article>
+            }
+        }
+    </div>
+</section>

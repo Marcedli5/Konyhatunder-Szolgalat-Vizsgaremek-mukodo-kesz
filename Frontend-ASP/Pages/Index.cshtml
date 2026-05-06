@@ -1,0 +1,68 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Főoldal";
+}
+
+<section class="hero-section">
+    <div class="container hero-grid">
+        <div class="hero-copy">
+            <span class="eyebrow">Ízek, amelyek bearanyozzák a napod</span>
+            <h1>Konyhatündér Szolgálat, ahol a házias ebéd egy kattintásra van.</h1>
+            <p class="hero-text">
+                Egyszerű, megbízható ételkiszállítás családi ízekkel, napi menükkel és gondosan összeállított ajánlatokkal.
+                A célunk, hogy a rendelés gyors legyen, az étel pedig emlékezetesen finom.
+            </p>
+            <div class="hero-actions">
+                <a class="btn btn-brand-primary" asp-page="/Etlap">Megnézem az étlapot</a>
+                <a class="btn btn-brand-secondary" asp-page="/HogyanRendelhetek">Hogyan rendelhetek?</a>
+            </div>
+            <div class="hero-highlights">
+                <span>Minőségi alapanyagok</span>
+                <span>Házias kínálat</span>
+                <span>Megbízható kiszállítás</span>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-image-card">
+                <img src="~/images/KT2.png" alt="Konyhatündér illusztráció" class="hero-main-image hero-main-image-illustration" />
+            </div>
+            <div class="floating-logo-card">
+                <img src="~/images/b8f4e358ee94408994725a81adfc41b6.webp" alt="Leves ételfotó" class="floating-logo floating-food-image" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="info-section">
+    <div class="container">
+        <div class="section-heading">
+            <span class="eyebrow">Miért minket választanak?</span>
+            <h2>Egyszerű rendelés, megbízhatóság, otthonos ízélmény.</h2>
+        </div>
+        <div class="card-grid">
+            <article class="info-card">
+                <h3>Minőségi alapanyagok</h3>
+                <p>Ételeink kizárólag friss és minőségi alapanyagokból készülnek a maximális ízélmény elérése érdekében</p>
+            </article>
+            <article class="info-card">
+                <h3>Házias kínálat</h3>
+                <p>Levesek, főételek, könnyed fogások és desszertek egy helyen, úgy összeállítva, hogy mindenki találjon kedvére valót.</p>
+            </article>
+            <article class="info-card">
+                <h3>Megbízható kiszállítás</h3>
+                <p>Futáraink minden nap egyenesen az ajtaja elé szállítják az ételt, az egyeztetett időpontban</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container cta-panel">
+        <div>
+            <span class="eyebrow">Heti ajánlat</span>
+            <h2>Próbáld ki menüinket és válassz minden napra igazi ételt.</h2>
+        </div>
+        <a class="btn btn-brand-secondary" asp-page="/Kapcsolat">Kapcsolatfelvétel</a>
+    </div>
+</section>

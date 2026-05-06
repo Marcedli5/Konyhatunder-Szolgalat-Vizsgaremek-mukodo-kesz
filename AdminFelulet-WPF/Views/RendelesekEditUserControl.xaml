@@ -1,0 +1,582 @@
+<UserControl x:Class="WPF_AdminFelulet.Views.RendelesekEditUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:WPF_AdminFelulet.ViewModels"
+             mc:Ignorable="d"
+             d:DesignHeight="900"
+             d:DesignWidth="1400"
+             d:DataContext="{d:DesignInstance Type=vm:RendelesekEditViewModel}">
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="ShellBrush" Color="#FFF3F6FB" />
+        <SolidColorBrush x:Key="CardBrush" Color="#FFFFFFFF" />
+        <SolidColorBrush x:Key="LineBrush" Color="#FFD9E3F0" />
+        <SolidColorBrush x:Key="InkBrush" Color="#FF243142" />
+        <SolidColorBrush x:Key="MutedBrush" Color="#FF677689" />
+        <SolidColorBrush x:Key="AccentBrush" Color="#FF4E6FAE" />
+        <SolidColorBrush x:Key="SoftAccentBrush" Color="#FFEAF0F7" />
+        <SolidColorBrush x:Key="DangerBrush" Color="#FFC75C5C" />
+        <SolidColorBrush x:Key="SuccessBrush" Color="#FF547D63" />
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+
+        <Style x:Key="CardStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource CardBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource LineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="14" />
+            <Setter Property="Padding" Value="16" />
+        </Style>
+
+        <Style x:Key="SectionTitleStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="{StaticResource InkBrush}" />
+        </Style>
+
+        <Style x:Key="LabelStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0,12,0,4" />
+            <Setter Property="Foreground" Value="{StaticResource MutedBrush}" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+
+        <Style x:Key="EditorTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Padding" Value="10,8" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="BorderBrush" Value="{StaticResource LineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Background" Value="White" />
+        </Style>
+
+        <Style x:Key="EditorComboStyle" TargetType="ComboBox">
+            <Setter Property="Padding" Value="8,6" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="BorderBrush" Value="{StaticResource LineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="MinWidth" Value="220" />
+        </Style>
+
+        <Style x:Key="DatePickerStyle" TargetType="DatePicker">
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="BorderBrush" Value="{StaticResource LineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Background" Value="White" />
+        </Style>
+
+        <Style x:Key="ActionButtonStyle" TargetType="Button">
+            <Setter Property="Padding" Value="14,8" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Background" Value="{StaticResource AccentBrush}" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              Margin="2" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.55" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="SecondaryButtonStyle"
+               TargetType="Button"
+               BasedOn="{StaticResource ActionButtonStyle}">
+            <Setter Property="Background" Value="{StaticResource SoftAccentBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource InkBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource LineBrush}" />
+        </Style>
+
+        <Style x:Key="DangerButtonStyle"
+               TargetType="Button"
+               BasedOn="{StaticResource ActionButtonStyle}">
+            <Setter Property="Background" Value="#FFFFF3F3" />
+            <Setter Property="Foreground" Value="{StaticResource DangerBrush}" />
+            <Setter Property="BorderBrush" Value="#FFF1C7C7" />
+        </Style>
+
+        <Style x:Key="ListBoxItemCardStyle" TargetType="ListBoxItem">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Margin" Value="0,0,0,12" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border x:Name="OuterBorder"
+                                Background="Transparent"
+                                CornerRadius="12"
+                                SnapsToDevicePixels="True">
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="OuterBorder" Property="Background" Value="#0E4E6FAE" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="OuterBorder" Property="Background" Value="#184E6FAE" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Background="{StaticResource ShellBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0"
+                Margin="16,16,16,0"
+                Style="{StaticResource CardStyle}">
+            <StackPanel>
+                <TextBlock Text="{Binding Title}"
+                           Style="{StaticResource SectionTitleStyle}" />
+                <TextBlock Text="{Binding Description}"
+                           Margin="0,4,0,0"
+                           Foreground="{StaticResource MutedBrush}"
+                           TextWrapping="Wrap" />
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="1"
+                Margin="16,16,16,0"
+                Style="{StaticResource CardStyle}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="16" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="Keresés név vagy lakcím alapján"
+                               Style="{StaticResource LabelStyle}"
+                               Margin="0,0,0,4" />
+                    <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                             Style="{StaticResource EditorTextBoxStyle}" />
+                    <TextBlock Text="{Binding SearchSummaryText}"
+                               Margin="0,6,0,0"
+                               Foreground="{StaticResource MutedBrush}" />
+                    <TextBlock Text="{Binding VisibleOrdersCountText}"
+                               Margin="0,6,0,0"
+                               Foreground="{StaticResource SuccessBrush}"
+                               FontWeight="SemiBold" />
+                </StackPanel>
+
+                <Button Grid.Column="2"
+                        Margin="16,22,0,0"
+                        VerticalAlignment="Top"
+                        Content="Frissítés"
+                        Command="{Binding RefreshCommand}"
+                        Style="{StaticResource SecondaryButtonStyle}" />
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="2"
+              Margin="16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="360" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0"
+                    Style="{StaticResource CardStyle}">
+                <ScrollViewer VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel>
+                        <TextBlock Text="{Binding EditorHeaderText}"
+                                   Style="{StaticResource SectionTitleStyle}" />
+                        <TextBlock Text="{Binding EditorSubText}"
+                                   Margin="0,4,0,0"
+                                   Foreground="{StaticResource MutedBrush}"
+                                   TextWrapping="Wrap" />
+
+                        <Border Margin="0,14,0,0"
+                                Padding="12"
+                                Background="#FFF8FBFF"
+                                BorderBrush="{StaticResource LineBrush}"
+                                BorderThickness="1"
+                                CornerRadius="12">
+                            <TextBlock Text="{Binding EditorSummaryText}"
+                                       Foreground="{StaticResource InkBrush}"
+                                       TextWrapping="Wrap" />
+                        </Border>
+
+                        <StackPanel IsEnabled="{Binding HasSelectedOrder}">
+                            <TextBlock Text="Megrendelő neve *" Style="{StaticResource LabelStyle}" />
+                            <TextBox Text="{Binding EditedCustomerName, UpdateSourceTrigger=PropertyChanged}"
+                                     Style="{StaticResource EditorTextBoxStyle}" />
+
+                            <TextBlock Text="Email *" Style="{StaticResource LabelStyle}" />
+                            <TextBox Text="{Binding EditedEmail, UpdateSourceTrigger=PropertyChanged}"
+                                     Style="{StaticResource EditorTextBoxStyle}" />
+
+                            <TextBlock Text="Telefonszám" Style="{StaticResource LabelStyle}" />
+                            <TextBox Text="{Binding EditedPhone, UpdateSourceTrigger=PropertyChanged}"
+                                     Style="{StaticResource EditorTextBoxStyle}" />
+
+                            <TextBlock Text="Lakcím *" Style="{StaticResource LabelStyle}" />
+                            <TextBox Text="{Binding EditedAddress, UpdateSourceTrigger=PropertyChanged}"
+                                     Style="{StaticResource EditorTextBoxStyle}"
+                                     AcceptsReturn="True"
+                                     TextWrapping="Wrap"
+                                     MinHeight="72" />
+
+                            <TextBlock Text="Menü *" Style="{StaticResource LabelStyle}" />
+                            <ComboBox ItemsSource="{Binding Menus}"
+                                      SelectedItem="{Binding SelectedEditMenu}"
+                                      DisplayMemberPath="DisplayText"
+                                      Style="{StaticResource EditorComboStyle}" />
+
+                            <Grid Margin="0,12,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="16" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="Mennyiség *"
+                                               Margin="0,0,0,4"
+                                               Foreground="{StaticResource MutedBrush}"
+                                               FontWeight="SemiBold" />
+                                    <TextBox Text="{Binding EditedQuantityText, UpdateSourceTrigger=PropertyChanged}"
+                                             Style="{StaticResource EditorTextBoxStyle}" />
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="2">
+                                    <TextBlock Text="Kiszállítási dátum *"
+                                               Margin="0,0,0,4"
+                                               Foreground="{StaticResource MutedBrush}"
+                                               FontWeight="SemiBold" />
+                                    <DatePicker SelectedDate="{Binding EditedDeliveryDate}"
+                                                Style="{StaticResource DatePickerStyle}" />
+                                </StackPanel>
+                            </Grid>
+
+                            <TextBlock Text="{Binding EditedDeliveryDateText}"
+                                       Margin="0,8,0,0"
+                                       Foreground="{StaticResource AccentBrush}"
+                                       FontWeight="SemiBold" />
+                            <TextBlock Text="{Binding EditorTotalText}"
+                                       Margin="0,4,0,0"
+                                       Foreground="{StaticResource SuccessBrush}"
+                                       FontWeight="SemiBold" />
+
+                            <TextBlock Text="Megjegyzés" Style="{StaticResource LabelStyle}" />
+                            <TextBox Text="{Binding EditedComment, UpdateSourceTrigger=PropertyChanged}"
+                                     Style="{StaticResource EditorTextBoxStyle}"
+                                     AcceptsReturn="True"
+                                     TextWrapping="Wrap"
+                                     VerticalScrollBarVisibility="Auto"
+                                     MinHeight="110" />
+
+                            <Border Margin="0,16,0,0"
+                                    Padding="12"
+                                    Background="#FFF6FAF7"
+                                    BorderBrush="#FFD9E7DE"
+                                    BorderThickness="1"
+                                    CornerRadius="12">
+                                <TextBlock Text="A mentés csak akkor aktív, ha a kötelező megrendelő adatok, a menü, a mennyiség és a dátum is érvényes."
+                                           Foreground="{StaticResource InkBrush}"
+                                           TextWrapping="Wrap" />
+                            </Border>
+
+                            <Grid Margin="0,16,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="12" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Button Grid.Column="0"
+                                        Content="Módosítás mentése"
+                                        Command="{Binding SaveChangesCommand}"
+                                        Style="{StaticResource ActionButtonStyle}" />
+
+                                <Button Grid.Column="2"
+                                        Content="Kijelölés törlése"
+                                        Command="{Binding ClearSelectionCommand}"
+                                        Style="{StaticResource SecondaryButtonStyle}" />
+                            </Grid>
+
+                            <Button Margin="0,12,0,0"
+                                    Content="Kijelölt rendelés törlése"
+                                    Command="{Binding DeleteOrderCommand}"
+                                    Style="{StaticResource DangerButtonStyle}" />
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+
+            <Border Grid.Column="2"
+                    Style="{StaticResource CardStyle}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0">
+                        <TextBlock Text="Rendeléslista"
+                                   Style="{StaticResource SectionTitleStyle}" />
+                        <TextBlock Text="A sorokra kattintva a bal oldali panelen azonnal szerkeszthető a megrendelő és a rendelés adata."
+                                   Margin="0,4,0,0"
+                                   Foreground="{StaticResource MutedBrush}"
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
+
+                    <ListBox Grid.Row="1"
+                             Margin="0,16,0,0"
+                             ItemsSource="{Binding FilteredOrders}"
+                             SelectedItem="{Binding SelectedOrder}"
+                             BorderThickness="0"
+                             Background="Transparent"
+                             ItemContainerStyle="{StaticResource ListBoxItemCardStyle}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Padding="0"
+                                        Background="{Binding MenuAccentBrush}"
+                                        BorderBrush="{Binding MenuAccentLineBrush}"
+                                        BorderThickness="1"
+                                        CornerRadius="12">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Border Background="{Binding MenuAccentLineBrush}"
+                                                CornerRadius="12,0,0,12" />
+
+                                        <Border Grid.Column="1"
+                                                Padding="16"
+                                                Background="#FFFCFDFE"
+                                                CornerRadius="0,12,12,0">
+                                            <StackPanel>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <StackPanel>
+                                                        <TextBlock Text="{Binding CustomerName}"
+                                                                   FontSize="18"
+                                                                   FontWeight="Bold"
+                                                                   Foreground="{StaticResource InkBrush}" />
+                                                        <TextBlock Text="{Binding Address}"
+                                                                   Margin="0,4,0,0"
+                                                                   Foreground="{StaticResource MutedBrush}"
+                                                                   TextWrapping="Wrap" />
+                                                    </StackPanel>
+
+                                                    <Border Grid.Column="1"
+                                                            Padding="10,6"
+                                                            Background="{Binding MenuAccentBrush}"
+                                                            BorderBrush="{Binding MenuAccentLineBrush}"
+                                                            BorderThickness="1"
+                                                            CornerRadius="999">
+                                                        <StackPanel>
+                                                            <TextBlock Text="{Binding DeliveryDateText}"
+                                                                       HorizontalAlignment="Center"
+                                                                       Foreground="{StaticResource InkBrush}"
+                                                                       FontWeight="SemiBold" />
+                                                            <TextBlock Text="{Binding DeliveryDayText}"
+                                                                       Margin="0,2,0,0"
+                                                                       HorizontalAlignment="Center"
+                                                                       Foreground="{StaticResource AccentBrush}" />
+                                                        </StackPanel>
+                                                    </Border>
+                                                </Grid>
+
+                                                <Grid Margin="0,14,0,0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Border Grid.Column="0"
+                                                            Margin="0,0,8,0"
+                                                            Padding="10,8"
+                                                            Background="{Binding MenuAccentBrush}"
+                                                            BorderBrush="{Binding MenuAccentLineBrush}"
+                                                            BorderThickness="1"
+                                                            CornerRadius="10">
+                                                        <StackPanel>
+                                                            <TextBlock Text="Menü"
+                                                                       Foreground="{StaticResource MutedBrush}"
+                                                                       FontWeight="SemiBold" />
+                                                            <TextBlock Text="{Binding MenuName}"
+                                                                       Margin="0,4,0,0"
+                                                                       Foreground="{StaticResource InkBrush}" />
+                                                        </StackPanel>
+                                                    </Border>
+
+                                                    <Border Grid.Column="1"
+                                                            Margin="4,0"
+                                                            Padding="10,8"
+                                                            Background="#FFF8FBFF"
+                                                            BorderBrush="{StaticResource LineBrush}"
+                                                            BorderThickness="1"
+                                                            CornerRadius="10">
+                                                        <StackPanel>
+                                                            <TextBlock Text="Mennyiség"
+                                                                       Foreground="{StaticResource MutedBrush}"
+                                                                       FontWeight="SemiBold" />
+                                                            <TextBlock Text="{Binding QuantityText}"
+                                                                       Margin="0,4,0,0"
+                                                                       Foreground="{StaticResource InkBrush}" />
+                                                        </StackPanel>
+                                                    </Border>
+
+                                                    <Border Grid.Column="2"
+                                                            Margin="8,0,0,0"
+                                                            Padding="10,8"
+                                                            Background="#FFF8FBFF"
+                                                            BorderBrush="{StaticResource LineBrush}"
+                                                            BorderThickness="1"
+                                                            CornerRadius="10">
+                                                        <StackPanel>
+                                                            <TextBlock Text="Összár"
+                                                                       Foreground="{StaticResource MutedBrush}"
+                                                                       FontWeight="SemiBold" />
+                                                            <TextBlock Text="{Binding TotalPriceText}"
+                                                                       Margin="0,4,0,0"
+                                                                       Foreground="{StaticResource InkBrush}" />
+                                                        </StackPanel>
+                                                    </Border>
+                                                </Grid>
+
+                                                <Grid Margin="0,14,0,0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <StackPanel Grid.Column="0"
+                                                                Margin="0,0,12,0">
+                                                        <TextBlock Text="Telefonszám"
+                                                                   Foreground="{StaticResource MutedBrush}"
+                                                                   FontWeight="SemiBold" />
+                                                        <TextBlock Text="{Binding PhoneText}"
+                                                                   Margin="0,4,0,0"
+                                                                   Foreground="{StaticResource InkBrush}" />
+                                                    </StackPanel>
+
+                                                    <StackPanel Grid.Column="1"
+                                                                Margin="0,0,12,0">
+                                                        <TextBlock Text="Email"
+                                                                   Foreground="{StaticResource MutedBrush}"
+                                                                   FontWeight="SemiBold" />
+                                                        <TextBlock Text="{Binding Email}"
+                                                                   Margin="0,4,0,0"
+                                                                   Foreground="{StaticResource InkBrush}"
+                                                                   TextWrapping="Wrap" />
+                                                    </StackPanel>
+                                                </Grid>
+
+                                                <TextBlock Text="Megjegyzés"
+                                                           Style="{StaticResource LabelStyle}" />
+                                                <TextBlock Text="{Binding CommentText}"
+                                                           Foreground="{StaticResource InkBrush}"
+                                                           TextWrapping="Wrap" />
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <Border Grid.Row="2"
+                            Margin="0,16,0,0"
+                            Padding="14"
+                            Background="#FFF8FBFF"
+                            BorderBrush="{StaticResource LineBrush}"
+                            BorderThickness="1"
+                            CornerRadius="12">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0"
+                                        Margin="0,0,12,0">
+                                <TextBlock Text="Becsült összeg"
+                                           Foreground="{StaticResource MutedBrush}"
+                                           FontWeight="SemiBold" />
+                                <TextBlock Text="{Binding VisibleEstimatedTotalText}"
+                                           Margin="0,4,0,0"
+                                           Foreground="{StaticResource InkBrush}"
+                                           FontSize="18"
+                                           FontWeight="Bold" />
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1"
+                                        Margin="0,0,12,0">
+                                <TextBlock Text="A menü"
+                                           Foreground="{StaticResource MutedBrush}"
+                                           FontWeight="SemiBold" />
+                                <TextBlock Text="{Binding VisibleAMenuCount}"
+                                           Margin="0,4,0,0"
+                                           Foreground="{StaticResource InkBrush}"
+                                           FontSize="18"
+                                           FontWeight="Bold" />
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="2"
+                                        Margin="0,0,12,0">
+                                <TextBlock Text="B menü"
+                                           Foreground="{StaticResource MutedBrush}"
+                                           FontWeight="SemiBold" />
+                                <TextBlock Text="{Binding VisibleBMenuCount}"
+                                           Margin="0,4,0,0"
+                                           Foreground="{StaticResource InkBrush}"
+                                           FontSize="18"
+                                           FontWeight="Bold" />
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="3">
+                                <TextBlock Text="C menü"
+                                           Foreground="{StaticResource MutedBrush}"
+                                           FontWeight="SemiBold" />
+                                <TextBlock Text="{Binding VisibleCMenuCount}"
+                                           Margin="0,4,0,0"
+                                           Foreground="{StaticResource InkBrush}"
+                                           FontSize="18"
+                                           FontWeight="Bold" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

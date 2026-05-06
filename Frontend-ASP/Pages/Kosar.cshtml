@@ -1,0 +1,34 @@
+﻿@page "/kosar"
+@model Frontend_ASP.Pages.KosarModel
+@{
+    ViewData["Title"] = "Kosár";
+}
+
+<section class="page-hero page-hero-soft">
+    <div class="container">
+        <span class="eyebrow">Kosár</span>
+        <h1>Rendelés leadása</h1>
+        <p>Itt látod a kosárba tett menüket, az összesített árat, és innen tudod leadni a rendelést.</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container cart-layout">
+        <div class="editor-card">
+            <h2>Kosár tartalma</h2>
+            <div id="cart-app" class="cart-app">
+                <p class="editor-item-meta">A kosár betöltése folyamatban...</p>
+            </div>
+        </div>
+
+        <div class="editor-card issue-card">
+            <h2>Piros hibabejelentés fül</h2>
+            <p class="editor-item-meta">Ha probléma merül fel a rendelésnél, itt azonnal jelezheted.</p>
+            <textarea id="ticket-description" class="identity-input issue-textarea" placeholder="Írd le röviden a problémát..."></textarea>
+            <div class="auth-actions">
+                <button type="button" id="send-ticket-button" class="btn btn-danger-soft">Hibabejelentés küldése</button>
+            </div>
+            <div id="ticket-feedback"></div>
+        </div>
+    </div>
+</section>

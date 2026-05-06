@@ -1,0 +1,58 @@
+﻿@page
+@model Frontend_ASP.Areas.Identity.Pages.Account.LoginModel
+@{
+    ViewData["Title"] = "Bejelentkezés";
+}
+
+<section class="page-hero page-hero-soft">
+    <div class="container auth-shell">
+        <article class="auth-card">
+            <span class="eyebrow">Fiók</span>
+            <h1>Bejelentkezés</h1>
+            <p class="auth-lead">Jelentkezz be, hogy elérd a fiókodat és ha admin vagy, az étlapszerkesztést is.</p>
+
+            @if (!string.IsNullOrWhiteSpace(Model.FormMessage))
+            {
+                <div class="identity-message identity-message-error">@Model.FormMessage</div>
+            }
+
+            <form method="post" class="auth-form">
+                <input asp-for="Input.ReturnUrl" type="hidden" />
+
+                <div class="auth-field">
+                    <label asp-for="Input.Email"></label>
+                    <input asp-for="Input.Email" class="identity-input" autocomplete="username" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+
+                <div class="auth-field">
+                    <label asp-for="Input.Password"></label>
+                    <input asp-for="Input.Password" class="identity-input" autocomplete="current-password" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+
+                <label class="editor-check auth-check" asp-for="Input.RememberMe">
+                    <input asp-for="Input.RememberMe" />
+                    <span>Emlékezzen rám</span>
+                </label>
+
+                <div class="auth-actions">
+                    <button type="submit" class="btn btn-brand-primary auth-submit">Bejelentkezés</button>
+                    <a class="btn btn-brand-secondary" asp-page="./Register">Regisztráció</a>
+                </div>
+            </form>
+
+            @if (Model.OfferRegistration)
+            {
+                <div class="identity-message identity-message-info auth-prompt">
+                    <p>@Model.RegistrationPrompt</p>
+                    <a class="btn btn-brand-primary" asp-page="./Register" asp-route-email="@Model.Input.Email">Igen, regisztrálni szeretnék</a>
+                </div>
+            }
+        </article>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

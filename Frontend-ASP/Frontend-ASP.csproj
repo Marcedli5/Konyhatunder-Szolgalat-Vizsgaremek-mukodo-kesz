@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-Frontend_ASP-0a9b4366-afbd-4830-8817-9b22365ba58a</UserSecretsId>
+    <RootNamespace>Frontend_ASP</RootNamespace>
+  </PropertyGroup>
+</Project>
