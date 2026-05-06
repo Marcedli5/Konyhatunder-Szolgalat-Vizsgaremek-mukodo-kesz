@@ -1,23 +1,23 @@
 # Konyhatunder Szolgalat Vizsgaremek
 
-Ez a projekt egy etelrendelesi es adminisztracios rendszer. Harom fo reszbol all:
+Ez a projekt egy ételrendelesi és adminisztrácios rendszer. Három fő részből áll:
 
 - `Backend-ASP`: ASP.NET Core backend API.
-- `Frontend-ASP`: Razor Pages alapu webes felulet a felhasznaloknak.
-- `AdminFelulet-WPF`: WPF alapu admin felulet etlap, etelek es rendelesek kezelesere.
+- `Frontend-ASP`: Razor Pages alapú webes felulet a felhasználóknak.
+- `AdminFelulet-WPF`: WPF alapú admin felület étlap, ételek és rendelések kezelésére.
 
 ## Szükséges programok
 
-- Windows operacios rendszer
+- Windows operációs rendszer
 - Visual Studio 2022 vagy ujabb
 - .NET 9 SDK
-- SQL Server vagy SQL Server LocalDB az ASP.NET Identity adatbazishoz
-- MySQL vagy MariaDB a `vizsgaremek_etlap` adatbazishoz
+- SQL Server vagy SQL Server LocalDB az ASP.NET Identity adatbázishoz
+- MySQL vagy MariaDB a `vizsgaremek_etlap` adatbázishoz
 
 ## Projekt megnyitása
 
-1. Nyisd meg a `Konyhatunder-Szolgalat-Vizsgaremek.sln` fajlt Visual Studioban.
-2. Allitsd be az adatbazis kapcsolatokat az `appsettings.json` fajlokban.
+1. Nyisd meg a `Konyhatunder-Szolgalat-Vizsgaremek.sln` fájlt Visual Studioban.
+2. Állitsd be az adatbázis kapcsolatokat az `appsettings.json` fajlokban.
 3. Hozd létre a 2 adatbázist a következő parancsok beírásával a package-manager-console-ba ebben a sorrendben.
    - Add-Migration Identity -Context ApplicationDbContext
    - Update-Database -Context ApplicationDbContext
