@@ -1,15 +1,15 @@
 # Konyhatunder Szolgalat Vizsgaremek
 
-Ez a projekt egy ételrendelesi és adminisztrácios rendszer. Három fő részből áll:
+Ez a projekt egy ételrendelési és adminisztrácios rendszer. Három fő részből áll:
 
 - `Backend-ASP`: ASP.NET Core backend API.
-- `Frontend-ASP`: Razor Pages alapú webes felulet a felhasználóknak.
+- `Frontend-ASP`: Razor Pages alapú webes felület a felhasználóknak.
 - `AdminFelulet-WPF`: WPF alapú admin felület étlap, ételek és rendelések kezelésére.
 
 ## Szükséges programok
 
 - Windows operációs rendszer
-- Visual Studio 2022 vagy ujabb
+- Visual Studio 2022 vagy újabb
 - .NET 9 SDK
 - SQL Server vagy SQL Server LocalDB az ASP.NET Identity adatbázishoz
 - MySQL vagy MariaDB a `vizsgaremek_etlap` adatbázishoz
@@ -49,7 +49,7 @@ A felhasználói webes felület projektje:
 Frontend-ASP
 ```
 
-Itt érhető el az étlap, a kosár, a profil, a sajat rendelések, valamint az információs oldalak. A kosár és rendelés funkciókhoz be kell jelentkezni.
+Itt érhető el az étlap, a kosár, a profil, a saját rendelések, valamint az információs oldalak. A kosár és rendelés funkciókhoz be kell jelentkezni.
 
 ## WPF admin felület indítása
 
@@ -65,7 +65,7 @@ Inditás elött ellenörizd az alábbi fájlt:
 AdminFelulet-WPF/apiSettings.json
 ```
 
-Ebben a `BaseUrl` értékenek a backend cimet kell tartalmaznia, példaul:
+Ebben a `BaseUrl` értékenek a backend címet kell tartalmaznia, példaul:
 
 ```json
 {
@@ -88,19 +88,19 @@ Ha a backend más porton fut, ezt az érteket is át kell irni.
 
 ### Backend
 
-- felhasználoi API vegpontok
+- felhasználói API vegpontok
 - admin API végpontok
-- kosár kezeles
+- kosár kezelés
 - rendelés kezelés
 - étlap és menü adatok kezelése
-- hibajegy rögzitese
+- hibajegy rögzitése
 
 ### WPF admin felület
 
 - heti étlap szerkesztese
 - ételek kezelése
 - új rendelés felvétele
-- rendelések keresése, módosítása és törlese
+- rendelések keresése, módosítása és törlése
 
 ## Gyakori hibák
 
@@ -110,7 +110,7 @@ Ellenörizd, hogy fut-e a `Backend-ASP`, és az `apiSettings.json` fájlban jó 
 
 ### Adatbázis kapcsolati hiba
 
-Ellenörizd az `appsettings.json` fájlokban a connection stringeket, valamint azt, hogy fut-e az SQL Server es a MySQL/MariaDB szerver.
+Ellenőrizd az `appsettings.json` fájlokban a connection stringeket, valamint azt, hogy fut-e az SQL Server es a MySQL/MariaDB szerver.
 
 ### MySQL script hiba az allergének táblánál
 
