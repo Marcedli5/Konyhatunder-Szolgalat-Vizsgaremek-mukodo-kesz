@@ -18,7 +18,7 @@ Ez a projekt egy etelrendelesi es adminisztracios rendszer. Harom fo reszbol all
 
 1. Nyisd meg a `Konyhatunder-Szolgalat-Vizsgaremek.sln` fajlt Visual Studioban.
 2. Allitsd be az adatbazis kapcsolatokat az `appsettings.json` fajlokban.
-3. Hozd létre a 2 adatbázist a következő parancsok beírásával a package-manager-console-ba
+3. Hozd létre a 2 adatbázist a következő parancsok beírásával a package-manager-console-ba ebben a sorrendben.
    - Add-Migration Identity -Context ApplicationDbContext
    - Update-Database -Context ApplicationDbContext
    - Add-Migration VizsgaremekEtlap -Context VizsgaremekEtlapContext
